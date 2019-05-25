@@ -54,7 +54,7 @@ void mgos_ledeffects_rotate_columns(void* param, mgos_rgbleds_action action)
     }
 }
 
-bool mgos_rotate_columns_init(void) {
+bool mgos_ledeffects_rotate_columns_init(void) {
   LOG(LL_INFO, ("mgos_rotate_columns_init ..."));
   ledmaster_add_effect("ANIM_ROTATE_COLUMNS", mgos_ledeffects_rotate_columns);
   return true;
