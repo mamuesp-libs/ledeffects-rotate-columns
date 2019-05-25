@@ -12,17 +12,17 @@ static void mgos_intern_rotate_columns_init( mgos_rgbleds* leds) {
     leds->fit_vert = mgos_sys_config_get_ledeffects_rotate_columns_fit_vert();
     leds->color_file = mgos_sys_config_get_ledeffects_rotate_columns_color_file();
     
-    mgos_rgbleds_get_bitmap(leds);
-    mgos_rgbleds_scale_bitmap(leds);
+    mgos_universal_led_get_bitmap(leds);
+    mgos_universal_led_scale_bitmap(leds);
     
-    mgos_rgbleds_log_data(leds, LL_DEBUG, "[DATA] Rotate Columns LEDs");
+    mgos_universal_led_log_data(leds, LL_DEBUG, "[DATA] Rotate Columns LEDs");
 }
 
 static void mgos_intern_rotate_columns_loop(mgos_rgbleds* leds)
 {
     LOG(LL_VERBOSE_DEBUG, ("Rotate columns: offset = %d", leds->pix_pos));
-    mgos_rgbleds_set_from_buffer(leds, leds->pix_pos, 0, true, mgos_sys_config_get_ledeffects_rotate_columns_toggle_odd());
-    mgos_rgbleds_show(leds);
+    mgos_universal_led_set_from_buffer(leds, leds->pix_pos, 0, true, mgos_sys_config_get_ledeffects_rotate_columns_toggle_odd());
+    mgos_universal_led_show(leds);
     
     leds->pix_pos += direction;
     leds->pix_pos = leds->pix_pos >= leds->pic_width ? 0 : leds->pix_pos < 0 ? leds->pic_width - 1 : leds->pix_pos;
